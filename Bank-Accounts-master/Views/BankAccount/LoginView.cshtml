@@ -1,0 +1,17 @@
+@model UserLogin
+<form asp-action="Login" asp-Controller="BankAccount" method="post">
+    <div class="form-group">
+      <label asp-for="LoginEmail"></label>
+      <input asp-for="LoginEmail" class="form-control">
+      <span asp-validation-for="LoginEmail" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+      <label asp-for="LoginPassword"></label>
+      <input asp-for="LoginPassword" class="form-control">
+      <span asp-validation-for="LoginPassword" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Sign In</button>
+</form>
+<br>
+<a asp-action="RegisterView" asp-controller="BankAccount">Need to Register?</a>

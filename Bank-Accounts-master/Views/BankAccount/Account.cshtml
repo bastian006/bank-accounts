@@ -1,0 +1,32 @@
+@model Account
+<h1>Welcome @ViewBag.retrivedUser.FirstName @ViewBag.retrivedUser.LastName</h1>
+<h3>Current balance: $@ViewBag.Total.ToString("0.00")</h3>
+
+<form asp-action="NewTransaction" asp-Controller="BankAccount" method="post">
+  <div class="form-group">
+    <label asp-for="userTrans.Amount"></label>
+    <input asp-for="userTrans.Amount" class="form-control">
+    <span asp-validation-for="userTrans.Amount" class="text-danger"></span>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+<table class="table table-striped table-hover">
+  <thead class="thead-dark">
+    <tr>
+      <th>Amount</th>
+      <th>Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    @foreach(var transaction in Model.allTrans)
+    {
+      <tr>
+        <td>$@transaction.Amount.ToString("0.00")</td>
+        <td>@transaction.CreatedAt.ToString("MMMM dd, yyyy")</td>
+      </tr>
+    }
+  </tbody>
+</table>
+
+<a asp-action="Logout" asp-controller="BankAccount" class="btn btn-info">Logout</a>
